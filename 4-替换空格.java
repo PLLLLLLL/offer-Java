@@ -15,8 +15,8 @@ public class Solution {
     public String replaceSpace(StringBuffer str) {
     	// 判断输入是否合法
     	if (str.equals(null) || str.length()<=0) {
-			return "";
-		}
+		return "";
+	}
     	
     	// 统计字符数组中的空白字符数
 	String string = new String();
