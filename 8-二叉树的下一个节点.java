@@ -25,9 +25,8 @@ public class TreeLinkNode {
 }
 */
 public class Solution {
-    public TreeLinkNode GetNext(TreeLinkNode pNode)
-    {
-        // 如果 pNode为空，返回 null
+    public TreeLinkNode GetNext(TreeLinkNode pNode) {
+		// 如果 pNode为空，返回 null
 		if (pNode == null) {
 			return null;
 		}
@@ -57,3 +56,4 @@ public class Solution {
 		}		
     }
 }
+        
