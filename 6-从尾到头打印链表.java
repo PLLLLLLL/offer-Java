@@ -16,19 +16,19 @@ import java.util.Stack;
 
 public class Solution {
     public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-         // 建立一个栈,把链表存进去，先进后出
-         Stack<Integer> stack = new Stack<Integer>();
-         while (listNode != null) {
+        // 建立一个栈,把链表存进去，先进后出
+        Stack<Integer> stack = new Stack<Integer>();
+        while (listNode != null) {
             stack.push(listNode.val);
             listNode = listNode.next;
-         }
+        }
          
-         // 建立一个链表，从栈里把元素一个一个取出来
-         ArrayList<Integer> list = new ArrayList<Integer>();
-         while (!stack.isEmpty()) {
+        // 建立一个链表，从栈里把元素一个一个取出来
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        while (!stack.isEmpty()) {
             list.add(stack.pop());
-         }
+        }
          
-         return list;
+        return list;
     }
 }
