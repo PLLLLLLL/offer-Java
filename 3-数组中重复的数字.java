@@ -86,17 +86,17 @@ public class Solution {
 		
         for (int i=0;i<numbers.length;i++) {
             while (numbers[i]!=i) {
-		    if (numbers[i]==numbers[numbers[i]]) {
-			    //System.out.println(numbers[i]);
-			    duplication[0] = numbers[i];
-			    return true;
-		    }
-			
-            tempVal = numbers[i];
-			numbers[i] = numbers[tempVal];
+	        if (numbers[i]==numbers[numbers[i]]) {
+		    //System.out.println(numbers[i]);
+		    duplication[0] = numbers[i];
+		    return true;
+                }
+		    
+		    tempVal = numbers[i];
+		    numbers[i] = numbers[tempVal];
 		    numbers[tempVal] = tempVal;
-			}
-		}
+	    }
+        }
         return false;
     }
 }
