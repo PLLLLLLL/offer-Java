@@ -15,7 +15,7 @@ public class Solution {
     public String replaceSpace(StringBuffer str) {
     	// 判断输入是否合法
     	if (str.equals(null) || str.length()<=0) {
-		return "";
+	    return "";
 	}
     	
     	// 统计字符数组中的空白字符数
@@ -25,9 +25,9 @@ public class Solution {
 	int originLen = str.length();
 	// StringBuffer判断字符用法
 	for (int i=0;i<originLen;i++) {
-		if (str.charAt(i)==' ') {
-			count++;
-		}
+	    if (str.charAt(i)==' ') {
+	        count++;
+	    }
 	} 	
 		
 	// 扩充StringBuffer长度,计算转换后的字符长度是多少
@@ -37,14 +37,14 @@ public class Solution {
 	// 长度为 newchLen, 索引最大调用为 newchLen - 1
 	newchLen = newchLen - 1;
 	for (int j=originLen-1; j>=0; j--) {
-		if (str.charAt(j) == ' ') {
-			// setCharAt 设置
-			str.setCharAt(newchLen--, '0');
-			str.setCharAt(newchLen--, '2');
-			str.setCharAt(newchLen--, '%');				
-		} else {
-			str.setCharAt(newchLen--, str.charAt(j));			
-		}
+	    if (str.charAt(j) == ' ') {
+	        // setCharAt 设置
+		str.setCharAt(newchLen--, '0');
+		str.setCharAt(newchLen--, '2');
+		str.setCharAt(newchLen--, '%');				
+	    } else {
+                str.setCharAt(newchLen--, str.charAt(j));			
+	    }
 	}
 		
 	return str.toString();
