@@ -12,6 +12,7 @@
      */
 
 
+
 /*
 public class TreeLinkNode {
     int val;
@@ -23,38 +24,36 @@ public class TreeLinkNode {
     }
 }
 */
-
 public class Solution {
-    public TreeLinkNode GetNext(TreeLinkNode pNode) {
+    public TreeLinkNode GetNext(TreeLinkNode pNode)
+    {
         // 如果 pNode为空，返回 null
 		if (pNode == null) {
-			  return null;
+			return null;
 		}
-		    
-        // 如果 pNode存在右子树，找右子树最左的节点
+		// 如果 pNode存在右子树，找右子树最左的节点
 		if (pNode.right != null) {
-			  // 不存在左节点
-			  pNode = pNode.right;
-			  // 存在左节点，找最左的节点
-			  while (pNode.left != null) {
-				    // 遍历寻找
-				    pNode = pNode.left;
-			  }
-			  return pNode;
-		    
-        // 如果 pNode不存在右子树，节点父节点的左子节点等于 pNode
+			// 不存在左节点
+			pNode = pNode.right;
+			// 存在左节点，找最左的节点
+			while (pNode.left != null) {
+				// 遍历寻找
+				pNode = pNode.left;
+			}
+			return pNode;
+		// 如果 pNode不存在右子树，节点父节点的左子节点等于 pNode
 		} else if (pNode.next != null && pNode.right == null && pNode.next.left == pNode) {
-			    return pNode.next;
+			return pNode.next;
 		// 如果 pNode不存在右子树，节点父节点的右子节点等于 pNode
 		} else if (pNode.next != null && pNode.right == null && pNode.next.right == pNode) {
-			  //  是否存在父节点有左子节点
-			    while (pNode.next != null && pNode.next.left != pNode) {
-					    // 遍历寻找
-					    pNode = pNode.next;
+			//  是否存在父节点有左子节点
+			while (pNode.next != null && pNode.next.left != pNode) {
+					// 遍历寻找
+					pNode = pNode.next;
 				} 	
-			    return pNode.next;
+			return pNode.next;
 		} else {
-			    return pNode.next;
+			return pNode.next;
 		}		
     }
 }
