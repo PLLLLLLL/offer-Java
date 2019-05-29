@@ -31,7 +31,7 @@ public class Solution {
 			return null;
 		}
 		
-    TreeNode root = reConstruct(preArr, 0, preArr.length-1, inArr, 0, inArr.length-1);
+        TreeNode root = reConstruct(preArr, 0, preArr.length-1, inArr, 0, inArr.length-1);
  
 		return root;
 	}
@@ -45,7 +45,7 @@ public class Solution {
      * @param inE    中序遍历的结束位置
      * @return 树的根结点
      */
-	  public TreeNode reConstruct(int[] preArr, int preS, int preE, int[] inArr, int inS, int inE) {
+	public TreeNode reConstruct(int[] preArr, int preS, int preE, int[] inArr, int inS, int inE) {
 		    // 开始位置大于结束位置说明已经没有需要处理的元素了
         if (preS>preE || inS>inE) {
             return null;
