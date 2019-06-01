@@ -86,11 +86,7 @@ public class Solution {
                 pathLength[0]--;
                 visited[row * cols + col] = false;
             }
-
         }
-
         return hasPath;
     }
-
-
 }
