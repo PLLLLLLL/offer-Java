@@ -7,64 +7,67 @@
      * 【题目描述】
      * 输入数字n，按顺序打印出从1到最大的n位十进制数。比如输入3，则打印出1、2、3一直到最大的3位数即999。
      
-     * 考虑多种情况，注意代码完整性
+     * 考虑是否溢出
      */
 
 
-public class PrintMaxOfNDigits { 
-    // 这个方法是用来实现对数加1操作
-    public boolean Increment(int[] number) {
-        boolean isOverflow = false; // 判断是否溢出
-        int nTakeOver=0; // 判断是否进位
-        for(int i=number.length-1;i>=0;i--) {
-            int nSum = number[i]+nTakeOver;
-            if(i==number.length-1)
-                nSum++;
-            if(nSum>=10) {
-                if(i==0)
-                    isOverflow=true;
-                } else{
-                    nTakeOver=1;
-                    nSum=nSum-10;
-                    number[i]=nSum;
-                }
-            } else{
-                number[i]=nSum;
-                break;
-            }
-        }
-        return isOverflow;
-    }
-    
-    public void PrintNumber(int[] number) {
-    // 该方法是负责打印一个正类，千万不要尝试将数组变成一个整数
-        boolean isBeginning=true;
-        for(int i=0;i<number.length;i++){
-            if(isBeginning&&number[i]!=0)
-                isBeginning=false;
-            if(!isBeginning){
-                System.out.print(number[i]);
-            }
-        }
-    }
-    
-    public void Test(int n){
-    //打印从1到最大的n位整数
-        if(n<=0)
-            System.out.println("输入出错，请重新输入！");
-        int[] number = new int[n];
-
-        while(!Increment(number)){
-            PrintNumber(number);
-            //System.out.println();
-        }
-    }
-
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        new PrintMaxOfNDigits().Test(1);
-    }
+//打印1到最大的n位数
+public void printToMaxOfDigits(int n){
+	if(n <= 0){
+		System.out.println("输入的n没有意义");
+		return;
+	}
+	//声明字符数组,用来存放一个大数
+	char number[] = new char[n];
+	for (int i = 0; i < number.length; ++i) { //放字符0进行初始化
+		number[i] = '0';
+	}
+	while(!incrementNumber(number)){ //如果大数自加，直到自溢退出
+		printNumber(number); //打印大数
+	}
 }
+
+//自加
+private boolean incrementNumber(char[] number) {
+	boolean isOverflow = false; //判断是否溢出
+	int nTakeOver = 0; //判断是否进位
+	int nLength = number.length;
+	for (int i = nLength - 1; i >= 0 ; --i) {
+		int nSum = number[i] - '0' + nTakeOver; //取到第i位的字符转换为数字 +进位符
+		if(i == nLength - 1){ //末尾自加1
+			++nSum;
+		}
+		if(nSum >= 10){
+			if(i == 0){
+				isOverflow = true;
+			}else{
+				nSum -= 10;
+				nTakeOver = 1;
+				number[i] = (char) ('0' + nSum);
+			}
+		}else{
+			number[i] = (char) (nSum + '0');
+			break;
+		}
+	}
+	return isOverflow;
+}
+
+//打印数字
+private void printNumber(char[] number) {
+	boolean isBeginning0 = true;
+	int nLength = number.length;
+	for (int i = 0; i < nLength; ++i) {
+		if(isBeginning0 && number[i]!='0'){
+			isBeginning0 = false;
+		}
+		if(!isBeginning0){
+			System.out.print(number[i]);
+		}
+	}
+	System.out.println();
+}
+
 
 
 //第二中方法实现，全排序实现
